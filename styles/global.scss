@@ -1,13 +1,22 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ubuntu:ital,wght@1,300;1,400&display=swap');
+
+/* Global css */
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Poppins', sans-serif;
   width: 100vw;
   height: auto;
   min-height: 100vh;
   overflow-x: hidden;
+  background-color: $primary-color;
+}
+body.light-theme {
+  background-color: $primary-white;
+  color: $primary-color;
 }
 
 a {
@@ -28,6 +37,10 @@ a {
     outline: none;
   }
 }
+ul {
+  list-style: none;
+}
+
 
 .container{
   display: flex;
@@ -39,7 +52,7 @@ a {
 
 .main{
   display: flex;
-  background: $primary-white;
+  background: $primary-color;
   width: calc(100% - 256px);
   max-width: calc(100% - 256px);
   min-height: calc(100vh - 56px);
@@ -55,4 +68,8 @@ a {
   align-items: center;
   width: 100%;
   height: 100%;
+}
+.grid {
+  display: grid;
+  gap: 1.5rem;
 }
