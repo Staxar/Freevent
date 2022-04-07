@@ -1,15 +1,15 @@
 import React from 'react'
 import Header from '../components/Layout/Header'
-import Footer from '../components/Layout/Footer'
+import Home from '../components/Home'
 import '../styles/index.scss'
-import Welcome from '../components/Welcome'
 
 function App() {
   return (
     <div>    
       <Header />
-      <Welcome />
-      <Footer />
+      <div className='main'>
+      <Home />
+      </div>
     </div>
   )
 }
