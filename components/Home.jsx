@@ -1,21 +1,20 @@
-import React from 'react';
 import { Facebook, Instagram, Tiktok, Mouse, ChevronDown } from './Icons/Icons';
 import banner from '../public/images/banner.png'
 function Home() {
-console.log(banner)
+
   return (
     <section className='home section' id="home">
       <div className="home__container container grid">
         <div className="home__content grid">
           <div className="home__social">
-            <a href="https://www.facebook.com/" target="_blank" class="home__social-icon">
-                <i class=""><Facebook /></i>
+            <a href="https://www.facebook.com/" target="_blank" className="home__social-icon">
+                <i className=""><Facebook /></i>
             </a>
-            <a href="https://instagram.com/" target="_blank" class="home__social-icon">
-                <i class=""><Instagram /></i>
+            <a href="https://instagram.com/" target="_blank" className="home__social-icon">
+                <i className=""><Instagram /></i>
             </a>
-            <a href="https://tiktok.com/" target="_blank" class="home__social-icon">
-                <i class=""><Tiktok /></i>
+            <a href="https://tiktok.com/" target="_blank" className="home__social-icon">
+                <i className=""><Tiktok /></i>
             </a>
           </div>
           <div className="home__img">
@@ -29,11 +28,11 @@ console.log(banner)
             <a href="#profil" className="button button--flex">Create Account</a>
           </div>
         </div>
-        <div class="home_scroll">
-                    <a href="#about" class="home__scroll-button button--flex">
-                        <i class="home__scroll-mouse"><Mouse /></i>
-                        <span class="home__scroll-name">Scroll down</span>
-                        <i class="home__scroll-arrow"><ChevronDown /></i>
+        <div className="home_scroll">
+                    <a href="#about" className="home__scroll-button button--flex">
+                        <i className="home__scroll-mouse"><Mouse /></i>
+                        <span className="home__scroll-name">Scroll down</span>
+                        <i className="home__scroll-arrow"><ChevronDown /></i>
                     </a>
                 </div>
       </div>

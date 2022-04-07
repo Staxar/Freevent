@@ -7,6 +7,7 @@
     padding: 0;
     margin: 0;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -17,6 +18,9 @@ body {
     font-size: $normal-font-size;
     background-color: $body-color;
     color: $text-color;
+}
+body.dark-theme {
+    background-color: #000;
 }
 
 h1,
@@ -38,6 +42,8 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+
 
 /*==================== REUSABLE CSS CLASSES ====================*/
 .section {
@@ -70,15 +76,6 @@ img {
 .grid {
     display: grid;
     gap: 1.5rem;
-}
-
-.header {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: $z-fixed;
-    background-color: $body-color;
 }
 
 /*==================== NAV ====================*/
@@ -146,18 +143,18 @@ img {
 }
 
 /* Media queries - NAV */
-@media screen and (max-width:767px){
+@media screen and (max-width:767px) {
     .nav__menu {
-      position: fixed;
-      bottom: -100%;
-      left: 0;
-      width: 100%;
-      background-color: var(--body-color);
-      padding: 2rem 1.5rem 4rem;
-      box-shadow: 0 -1px 4px rgba(0,0,0,.15);
-      border-radius: 1.5rem 1.5rem 0 0;
-      transition: .3s;
-  
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--body-color);
+        padding: 2rem 1.5rem 4rem;
+        box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
+        border-radius: 1.5rem 1.5rem 0 0;
+        transition: .3s;
+
     }
 }
 
@@ -165,6 +162,7 @@ img {
 .show-menu {
     bottom: 0;
 }
+
 /* Active link */
 .active-link {
     color: $first-color;
@@ -172,5 +170,55 @@ img {
 
 /* Change background header */
 .scroll_header {
-    box-shadow: 0 -1 4px rgba(0,0,0,.15);
-  }
+    box-shadow: 0 -1 4px rgba(0, 0, 0, .15);
+}
+
+
+/*==================== BUTTONS ====================*/
+.button {
+    display: inline-block;
+    background-color: $first-color;
+    color: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-weight: $font-medium;
+}
+
+.button:hover {
+    background-color: $first-color-alt;
+}
+
+.button__icon {
+    font-size: 1rem;
+    margin-left: $mb-0-5;
+    transition: .3s;
+}
+
+.button--white {
+    background-color: #fff;
+    color: $first-color;
+}
+
+.button--white:hover {
+    background-color: #fff;
+}
+
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+}
+
+.button--small {
+    padding: .75rem 1rem;
+}
+
+.button--link {
+    padding: 0;
+    background-color: transparent;
+    color: $first-color;
+}
+
+.button--link:hover {
+    background-color: transparent;
+    color: $first-color;
+}
