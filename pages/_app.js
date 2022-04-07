@@ -1,16 +1,12 @@
 import React from 'react'
 import Header from '../components/Layout/Header'
 import Home from '../components/Home'
+
 import '../styles/index.scss'
 
-function App() {
+function App({ Component, pageProps }) {
   return (
-    <div>    
-      <Header />
-      <div className='main'>
-      <Home />
-      </div>
-    </div>
+    <Component {...pageProps} />    
   )
 }
 export default App
