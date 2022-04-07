@@ -1,0 +1,66 @@
+.home__{
+    &container {
+        gap: 1rem;
+    }
+    &content {
+        grid-template-columns: .5fr 3fr;
+        padding-top: 3.5rem;
+        align-items: center;
+    }
+    &social {
+        display: grid;
+        grid-template-columns: max-content;
+        row-gap: 1rem;
+    }
+    &social-icon {
+        font-size: $h2-font-size;
+        color: $first-color;
+    }
+    &social-icon:hover {
+        color: $first-color-alt;
+    }
+    &blob {
+        width: 200px;
+        fill: $first-color;
+    }
+    &blob-img {
+        width: 170px;
+    }
+    &data {
+        grid-column: 1/3;
+    }
+    &title {
+        font-size: $big-font-size;
+    }
+    &subtitle {
+        font-size: $h3-font-size;
+        color: $text-color;
+        font-weight: $font-medium;
+        margin-bottom: $mb-0-75;
+      }
+    &description {
+        margin-bottom: $mb-2;
+      }
+    &scroll {
+        display: none;
+      }
+    &scroll-button {
+        color: $first-color;
+        transition: .3s;
+      }
+      .home__scroll-button:hover {
+        transform: translateY(0.25rem);
+      }
+      .home__scroll-mouse {
+        font-size: 2rem;
+      }
+      .home__scroll-name {
+        font-size: $small-font-size;
+        color: $title-color;
+        font-weight: $font-medium;
+        margin-right: $mb-0-25;
+      }
+      .home__scroll-arrow {
+        font-size: 1.25rem;
+      }
+}

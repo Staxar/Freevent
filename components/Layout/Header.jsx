@@ -5,7 +5,7 @@ export default function Header() {
     <section className="header">
       <header className="header" id="header">
           <nav className="nav container">
-            <a href="#" className="nav__logo">FreEvent</a>
+            <a href="#" className="nav__logo">Fre(e)vent</a>
           
           <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list grid">
