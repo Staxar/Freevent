@@ -1,21 +1,27 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { ViewGrid, About, Fire, Home, User, Phone, Moon, Map } from '../Icons/Icons';
+import { ViewGrid, About, Fire, Home, User, Phone, Moon, Map, Close } from '../Icons/Icons';
 export default function Header() {
-/*     useEffect(() => {
-        document.body.className = "light";
-        
-        return () => {
-          document.body.className = "";
-        }
-      }, []); */
+    const [active, setActive] = useState(false);
 
+    
+
+ function showMenu() {    
+      document.getElementById('nav-menu').classList.add(active ? "" : "show-menu");
+      setActive(a => !a);
+    };
+    function closeMenu() {    
+      document.getElementById('nav-menu').classList.remove("show-menu");
+      setActive(a => !a);
+    };
 
     const [isOpen, setIsOpen] = useState(false)
     useEffect(() =>{
 
       document.body.classList.toggle('dark-theme', isOpen);  
     }, [isOpen])
+
+   
   return (
     <section className="header">
       <header className="header" id="header">
@@ -55,12 +61,12 @@ export default function Header() {
                             </a>
                         </li>
                     </ul>
-                    <i className="uil uil-times nav__close" id="nav-close"></i>
+                    <i className="nav__close" id="nav-close" onClick={closeMenu}><Close /></i>
                 </div>
                 <div className="nav__btns">
                     {/* Theme change button */}
-                    <button onClick={()=> setIsOpen(!isOpen)}><i className="nav__icon change-theme" id="theme-button"><Moon /></i></button>
-                    <div className="nav__toggle" id="nav-toggle">
+                    <i className="nav__icon change-theme" id="theme-button" onClick={()=> setIsOpen(!isOpen)}><Moon /></i>
+                    <div className="nav__toggle" onClick={showMenu} id="nav-toggle">
                         <i className="nav__icon"><ViewGrid /></i>
                     </div>
                 </div>
