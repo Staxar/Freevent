@@ -1,32 +1,73 @@
-.header {
-    color: $primary-white;
-    position: fixed;
-    top: 0;
+.header{
     width: 100%;
-    height: 56px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: $z-fixed;
+    background-color: $body-color;
+}
+.nav{
+    max-height: 968px;
+    height: $header-height;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    @media screen and (min-width: 768px) {
-        justify-content: space-between;
+        &__logo,
+        &__toggle {
+            color: $title-color;
+            font-weight: $font-medium;
+    }
+        &__logo:hover {
+            color: $first-color;
+        }
+        &__toggle {
+            font-size: $h2-font-size;
+            cursor: pointer;
+        }
+        &__toggle:hover {
+            color: $first-color;
+        }
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        &__link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: $small-font-size;
+            color: $title-color;
+            font-weight: $font-medium;
+        }
+        &__icon {
+            font-size: $h2-font-size;
+        }
+        &__close {
+            position: absolute;
+            right: 1.3rem;
+            bottom: .5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: $first-color;
+        }
+        &__close:hover {
+            color: $first-color-alt;
+        }
+        &__btns {
+            display: flex;
+            align-items: center;
+        }
+@media screen and (max-width: 767px){
+    &__menu {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        width: 100%;
+        background-color: $body-color;
+        padding: 2rem 1.5rem 4rem;
+        box-shadow: 0 -1px 4px rgba(0,0,0,.15);
+        border-radius: 1.5rem 1.5rem 0 0;
+        transition: .3s;
     }
 }
-.nav__ {
-    &menu {
-        @media screen and (min-width: 768px) {
-            margin-left: auto;
-        }
-    }
-    &list {
-
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        @media screen and (min-width: 768px) {
-            display: flex;
-            column-gap: 2rem;
-        }
-    }
-
 }
