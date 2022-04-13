@@ -13,11 +13,11 @@ html {
 }
 
 body {
-    margin: 0 0 $header-height 0;
+    margin: 0 0 var(--header-height) 0;
     font-family: 'Poppins', sans-serif;
-    font-size: $normal-font-size;
-    background-color: $body-color;
-    color: $text-color;
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
 }
 body.dark-theme {
     background-color: #000;
@@ -26,8 +26,8 @@ body.dark-theme {
 h1,
 h2,
 h3 {
-    color: $title-color;
-    font-weight: $font-semi-bold;
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
 }
 
 ul {
@@ -51,14 +51,14 @@ img {
 }
 
 .section__title {
-    font-size: $h1-font-size;
-    color: $title-color;
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
 }
 
 .section__subtitle {
     display: block;
-    font-size: $small-font-size;
-    margin-bottom: $mb-3;
+    font-size: var(--small-font-size);
+    margin-bottom: var(--mb-3);
 }
 
 .section__title,
@@ -69,8 +69,8 @@ img {
 /* ==================== LAYOUT ==================== */
 .container {
     max-width: 768px;
-    margin-left: $mb-1-5;
-    margin-right: $mb-1-5;
+    margin-left: var(--mb-1-5);
+    margin-right: var(--mb-1-5);
 }
 
 .grid {
@@ -81,7 +81,7 @@ img {
 /*==================== NAV ====================*/
 .nav {
     max-height: 968px;
-    height: $header-height;
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,21 +89,21 @@ img {
 
 .nav__logo,
 .nav__toggle {
-    color: $title-color;
-    font-weight: $font-medium;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
 }
 
 .nav__logo:hover {
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .nav__toggle {
-    font-size: $h2-font-size;
+    font-size: var(--h2-font-size);
     cursor: pointer;
 }
 
 .nav__toggle:hover {
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .nav__list {
@@ -115,13 +115,13 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: $small-font-size;
-    color: $title-color;
-    font-weight: $font-medium;
+    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: var(--font-medium);
 }
 
 .nav__link:hover {
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .nav__icon {
@@ -135,11 +135,11 @@ img {
     bottom: .5rem;
     font-size: 1.5rem;
     cursor: pointer;
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .nav__close:hover {
-    color: $first-color-alt;
+    color: var(--first-color-alt);
 }
 
 /* Media queries - NAV */
@@ -165,7 +165,7 @@ img {
 
 /* Active link */
 .active-link {
-    color: $first-color;
+    color: var(--first-color);
 }
 
 /* Change background header */
@@ -177,26 +177,26 @@ img {
 /*==================== BUTTONS ====================*/
 .button {
     display: inline-block;
-    background-color: $first-color;
+    background-color: var(--first-color);
     color: #fff;
     padding: 1rem;
     border-radius: .5rem;
-    font-weight: $font-medium;
+    font-weight: var(--font-medium);
 }
 
 .button:hover {
-    background-color: $first-color-alt;
+    background-color: var(--first-color-alt);
 }
 
 .button__icon {
     font-size: 1rem;
-    margin-left: $mb-0-5;
+    margin-left: var(--mb-0-5);
     transition: .3s;
 }
 
 .button--white {
     background-color: #fff;
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .button--white:hover {
@@ -215,10 +215,10 @@ img {
 .button--link {
     padding: 0;
     background-color: transparent;
-    color: $first-color;
+    color: var(--first-color);
 }
 
 .button--link:hover {
     background-color: transparent;
-    color: $first-color;
+    color: var(--first-color);
 }

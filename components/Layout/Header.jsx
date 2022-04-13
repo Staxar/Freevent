@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { ViewGrid, About, Fire, Home, User, Phone, Moon, Map, Close } from '../Icons/Icons';
 export default function Header() {
@@ -14,12 +14,12 @@ export default function Header() {
       document.getElementById('nav-menu').classList.remove("show-menu");
       setActive(a => !a);
     };
-
-    const [isOpen, setIsOpen] = useState(false)
-    useEffect(() =>{
-
-      document.body.classList.toggle('dark-theme', isOpen);  
-    }, [isOpen])
+    const toggleThemeRef = useRef();
+  const toggleTheme = () => {
+    toggleThemeRef.current.checked
+    ? document.documentElement.setAttribute('data-theme', 'dark')
+    : document.documentElement.setAttribute('data-theme', '');
+  };
 
    
   return (
@@ -64,8 +64,8 @@ export default function Header() {
                     <i className="nav__close" id="nav-close" onClick={closeMenu}><Close /></i>
                 </div>
                 <div className="nav__btns">
-                    {/* Theme change button */}
-                    <i className="nav__icon change-theme" id="theme-button" onClick={()=> setIsOpen(!isOpen)}><Moon /></i>
+                    {/* Theme change button */}                    
+                    <input type="checkbox" className="nav__icon change-theme" id="theme-button" ref={toggleThemeRef} onChange={toggleTheme}></input>
                     <div className="nav__toggle" onClick={showMenu} id="nav-toggle">
                         <i className="nav__icon"><ViewGrid /></i>
                     </div>

@@ -11,11 +11,11 @@ export default function Cities() {
                 <div className="cities__content grid swiper-slide">
                     <img src={banner.src}></img>
                     <div className="cities__data">
-                    <h3 class="portfolio__title">Modern Website</h3>
-                            <p class="portfolio__description">Website adaptable to all devices</p>
-                            <a href="" class="button button--flex button--small cities__button">
+                    <h3 className="portfolio__title">Modern Website</h3>
+                            <p className="portfolio__description">Website adaptable to all devices</p>
+                            <a href="" className="button button--flex button--small cities__button">
                                 Demo
-                                <i class="button__icon"></i>
+                                <i className="button__icon"></i>
                             </a>
                     </div>
                 </div>
@@ -24,10 +24,10 @@ export default function Cities() {
             <div className="siper-button-next">
                 <i className="swiper-portfolio-icon"></i>
             </div>
-            <div class="swiper-button-prev">
-                    <i class="swiper-portfolio-icon"></i>
+            <div className="swiper-button-prev">
+                    <i className="swiper-portfolio-icon"></i>
             </div>
-            <div class="swiper-pagination"></div>
+            <div className="swiper-pagination"></div>
 
         </div>
     </section>

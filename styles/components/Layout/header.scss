@@ -3,29 +3,29 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    z-index: $z-fixed;
-    background-color: $body-color;
+    z-index: var(--z-fixed);
+    background-color: var(--body-color);
 }
 .nav{
     max-height: 968px;
-    height: $header-height;
+    height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
         &__logo,
         &__toggle {
-            color: $title-color;
-            font-weight: $font-medium;
+            color: var(--title-color);
+            font-weight: var(--font-medium);
     }
         &__logo:hover {
-            color: $first-color;
+            color: var(--first-color);
         }
         &__toggle {
-            font-size: $h2-font-size;
+            font-size: var(--h2-font-size);
             cursor: pointer;
         }
         &__toggle:hover {
-            color: $first-color;
+            color: var(--first-color);
         }
         &__list {
             grid-template-columns: repeat(3, 1fr);
@@ -35,12 +35,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: $small-font-size;
-            color: $title-color;
-            font-weight: $font-medium;
+            font-size: var(--small-font-size);
+            color: var(--title-color);
+            font-weight: var(--font-medium);
         }
         &__icon {
-            font-size: $h2-font-size;
+            font-size: var(--h2-font-size);
         }
         &__close {
             position: absolute;
@@ -48,10 +48,10 @@
             bottom: .5rem;
             font-size: 1.5rem;
             cursor: pointer;
-            color: $first-color;
+            color: var(--first-color);
         }
         &__close:hover {
-            color: $first-color-alt;
+            color: var(--first-color-alt);
         }
         &__btns {
             display: flex;
@@ -63,7 +63,7 @@
         bottom: -100%;
         left: 0;
         width: 100%;
-        background-color: $body-color;
+        background-color: var(--body-color);
         padding: 2rem 1.5rem 4rem;
         box-shadow: 0 -1px 4px rgba(0,0,0,.15);
         border-radius: 1.5rem 1.5rem 0 0;
