@@ -1,10 +1,12 @@
 @import 'variables';
 @import 'global';
 @import './components/Layout/header.scss';
+@import './components/Layout/footer.scss';
 @import './components/home.scss';
 @import './components/about.scss';
 @import './components/events.scss';
 @import './components/cities.scss';
-@import './components/swiper-bundle.min.css'
+@import './components/swiper-bundle.min.css';
+@import './media_queries.scss';
 
 
