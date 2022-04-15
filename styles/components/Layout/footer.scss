@@ -23,11 +23,14 @@
     &__link:hover {
         color: var(--first-color-lighter);
     }
-    &__social {
+    &__socials {
         font-size: 1.25rem;
         margin-right: var(--mb-1-5);
+        display: flex;
+        column-gap: 3rem;
+        place-content: space-evenly;
     }
-    &__social:hover {
+    &__socials:hover {
         color: var(--first-color-lighter);
     }
     &__copy {
@@ -39,8 +42,12 @@
     &__title, 
     &__subtitle, 
     &__link, 
-    &__social {
-        color: #fff;
+    &__socials {
+        color:  #fff;
+    }
+    &__social-icon {
+        color: var(--text-color-light);
+
     }
 
 }

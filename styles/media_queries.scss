@@ -26,9 +26,6 @@
         grid-template-columns: max-content;
         justify-content: center;
         }
-        &__content {
-            padding-right: 3.5rem;
-        }
         &__modal {
             padding: 0 .5rem;
         }
@@ -140,9 +137,6 @@
         }
         &__icon {
             font-size: 2rem;
-        }
-        &__content {
-            padding: 6rem 0 2rem 2.5rem;
         }
         &__modal-content {
             width: 450px;

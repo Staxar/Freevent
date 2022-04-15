@@ -22,13 +22,13 @@ export default function Footer() {
             </li>
           </ul>
           <div className="footer__socials">
-          <a href="https://www.facebook.com/" target="_blank" className="home__social-icon">
+          <a href="https://www.facebook.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Facebook /></i>
             </a>
-            <a href="https://instagram.com/" target="_blank" className="home__social-icon">
+            <a href="https://instagram.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Instagram /></i>
             </a>
-            <a href="https://tiktok.com/" target="_blank" className="home__social-icon">
+            <a href="https://tiktok.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Tiktok /></i>
             </a>
           </div>

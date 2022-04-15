@@ -28,7 +28,7 @@ const EventsSchema = new mongoose.Schema(
         type: Date,
     },
     ticket: {
-        type: String,
+        type: Boolean,
     },
     ticket_prize: {
         type: [Number],

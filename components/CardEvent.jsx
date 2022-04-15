@@ -1,13 +1,17 @@
 import { RightArrow } from "./Icons/Icons";
-const CardEvent = () => {
- 
+import Link from 'next/link';
+const CardEvent = ( { event, eventid } ) => {
+
   return (
         <div className="events__content">
-            <div className="img">Event_img</div>
-            <div className="events__title">Event_1</div>
+            <img src={event.img} alt="" className="events__img" />
+            <div className="events__title">{event.title}</div>
+            <Link href={`/events/${eventid}`} passHref>
             <span className="button button--flex button--small button--link events__button">View More
               <i className="button--icon"><RightArrow /></i>
             </span>
+            
+            </Link>
         </div>
   );
 };
