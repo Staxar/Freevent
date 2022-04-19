@@ -14,7 +14,6 @@ const EventsSchema = new mongoose.Schema(
     },
     img: {
       type: String,
-      required: true,
     },
     city_id: {
       type: String,
@@ -27,12 +26,6 @@ const EventsSchema = new mongoose.Schema(
     end_date: {
         type: Date,
     },
-    ticket: {
-        type: Boolean,
-    },
-    ticket_prize: {
-        type: [Number],
-    }
   },
   { timestamps: true }
 );

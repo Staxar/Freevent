@@ -1,4 +1,5 @@
-export default function Event () {
+export default function Event ( {citiesList} ) {
+    console.log(props);
     return (
         <div className="container">
             Hello

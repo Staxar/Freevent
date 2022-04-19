@@ -8,9 +8,6 @@ export default function Base({ citiesList, eventsList }) {
   
     return (
       <Layout>
-        <head>
-          lang="en"
-        </head>
         <Home />
         <About />
         <Events eventsList = { eventsList }/>

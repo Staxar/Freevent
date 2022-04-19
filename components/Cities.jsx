@@ -1,20 +1,34 @@
 import React from "react";
 import CitiesCard from './CitiesCard'
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper";
 
 export default function Cities({ citiesList }) {
   return (
     
     <section className='cities section' id='cities'>
         <h2 className="section__title">Cities</h2>
-        <div className="cities_container container swiper-container">
-            <div className="swiper-wrapper">
-                <div className="cities__content grid swiper-slide">
-                  {citiesList.map((cities) =>(
-                    <CitiesCard key={cities._id} cities={cities}/>
-                  ))}                  
-                </div>
-            </div>
+        <div className="cities_container container">
+              
+                <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                
+                  {citiesList.map((city) =>(
+                    <SwiperSlide>
+                      <CitiesCard 
+                      key={city._id} 
+                      city={city} 
+                      cityid={city._id}
+                      />
+                    </SwiperSlide>  
+                  ))}                   
+                </Swiper>              
+                    
         </div>
     </section>
 

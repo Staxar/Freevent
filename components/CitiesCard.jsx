@@ -1,7 +1,7 @@
-export default function CitiesCard ( { cities }) {
-    return (
-      <div>
-          {cities.name}
-      </div>
-    );
-  };
+export default function CitiesCard ( { city }) {
+  return (
+    <div>
+      {city.name}    
+    </div>
+  );
+};

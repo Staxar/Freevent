@@ -2,7 +2,7 @@ import React from 'react'
 import CardEvent from './CardEvent'
 
 
-export default function Events({ eventsList }) {
+export default function Events({ eventsList, citiesList }) {
 
 
   return (
