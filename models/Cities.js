@@ -8,12 +8,10 @@ const CitiesSchema = new mongoose.Schema({
     },
     lat:{
         type: String,
-        required: true,
         maxlength: 255,
     },
     lng:{
         type: String,
-        required: true,
         maxlength: 255,
     },
     country:{
@@ -23,7 +21,6 @@ const CitiesSchema = new mongoose.Schema({
     },
     iso2:{
         type: String,
-        required: true,
         maxlength: 255,
     },
     voivodeship:{
@@ -43,6 +40,7 @@ const CitiesSchema = new mongoose.Schema({
         type: String,
         maxlength: 255,
     }
-})
+},{ timestamps: true }
+)
 
 export default mongoose.models.Cities || mongoose.model("Cities", CitiesSchema);

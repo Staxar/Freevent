@@ -10,7 +10,7 @@ export default function Events({ eventsList, citiesList }) {
         <h2 className="section__title">Events</h2>
         <div className="events__container container grid">
         {eventsList.map((event,i) =>{
-          if(i<4){
+          if(i<5){
             return(
               <CardEvent 
               key={event._id} 

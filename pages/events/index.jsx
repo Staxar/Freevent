@@ -16,7 +16,6 @@ useEffect(async () => {
     }
 }, []);
 
-
   return (
     <Layout> 
     <section className='events section' id='events'>
