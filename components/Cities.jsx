@@ -18,14 +18,14 @@ export default function Cities({ citiesList }) {
               
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 
-                  {citiesList.map((city) =>(
-                    <SwiperSlide>
-                      <CitiesCard 
-                      key={city._id} 
+                  {citiesList.map((city) =>(                                                        
+                    <SwiperSlide key={city._id}>                                            
+                      <CitiesCard
+                      key={city._id}                         
                       city={city} 
-                      cityid={city._id}
                       />
-                    </SwiperSlide>  
+                    </SwiperSlide>
+                  
                   ))}                   
                 </Swiper>              
                     
