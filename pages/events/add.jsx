@@ -1,111 +1,130 @@
 import Layout from "../../components/Layout";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import axios from "axios";
+import { useRouter } from "next/router";
+import DatePicker from "react-datepicker";
 const Add = () => {
 
-    const [inputs, setInputs] = useState({});
-    // const [checked, setChecked] = useState(false);
-    // const [pick, onPick] = useState(new Date())
-    const [myOptions, setMyOptions] = useState([])
+    const eventForm = useRef();
+    const [error, setError] = useState();
+    const [formProcessing, setFormProcessing] = useState(false);
+    const [imagePreview, setImagePreview] = useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const router = useRouter();
+    const myOptions = ['Kępno', 'Wrocław', 'Opole'];
 
-    // const data = [];
-    
-    // const getDataFromAPI = () => {
-    //     console.log("Options Fetched from API")      
-    //     fetch('http://localhost:3000/api/cities').then((response) => {
-    //       return response.json()
-    //     }).then((res) => {
-    //       console.log(res)
-    //       for (var i = 0; i < res.length; i++) {
-    //         myOptions.push(res[i].name);
-    //         data.push(res[i].name)
-    //       }
-    //       setMyOptions(myOptions)
-    //     })
-    //   }
 
-    useEffect(() => {
-        console.log("Use Effect");
-        axios.get('http://localhost:3000/api/cities')
-        .then((res) => {
-        for (var i = 0; i < res.data.length; i++) {
-            myOptions.push(res.data[i].name);            
+    const handleImagePreview = (e) => {
+            const url = window.URL.createObjectURL(e.target.files[0]);
+            setImagePreview(url);
+            console.log(url, "url");        
+    }
+
+
+    async function handleSubmit(e) {
+        if (formProcessing) return;
+        setFormProcessing(true);
+        setError(null);
+        const form = new FormData(eventForm.current);
+        const payload = {
+            title: form.get('title'),
+            desc: form.get('desc'),
+            img: imagePreview,
+            city_id: form.get('city_id'),
+            start_date: startDate,
+            end_date: form.get('end_date')
+        };
+
+        if (form.get('img').name !== '') {
+            const picture = form.get('img');
+            const file = await uploadImage(picture);
+            payload.image = file.secure_url;
           }
-            setMyOptions(myOptions)
-        })
-    })
-    
 
-    const handleChange = (event) => {
-        // setChecked(!checked) //Checkbox
-        const name = event.target.name;
-        const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}))
-        
+        const response = await fetch(`/api/events`, {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            setFormProcessing(false);
+            console.log('Wysłano! = 1')
+            router.push('/events');
+            console.log('Wysłano! = 2')
+        }else {
+            const payload = await response.json();
+            setFormProcessing(false);
+            setError(payload.error);
+        }
     }
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(inputs);
-    }
+
 
     return (
         <Layout>
         <section className="add section">
         <div className="events__container container">
-            <form onSubmit={handleSubmit}>
-            <label>Event title:
-            <input 
-                type="text" 
-                name="title" 
-                value={inputs.title || ""} 
-                onChange={handleChange}
-            />
-            </label>
-            <label>Event description:
-            <input 
-                type="text" 
-                name="desc" 
-                value={inputs.desc || ""} 
-                onChange={handleChange}
-            />
-            </label>
-            <label htmlFor="image" className="form__label">
-              Image:            
-            <input
-              type="file"
-              name="image"
-              value={inputs.image || ""} 
-              onChange={handleChange}
-            /></label>
-
-            {/* <label>Tickets:
-                <input 
-                type="checkbox" 
-                name="tickets" 
-                checked={checked}
-                onChange={handleChange}
-                value={checked}
-                />
-            </label> */}
+            <form onSubmit={handleSubmit} ref={eventForm}>
+                {error && <div className="form_error">{error}</div>}
+        <label>Title</label>
+        <input 
+            type='text'
+            name='title'
+            id='title'
+            placeholder='Event title'
+            required
+            >                        
+        </input>
+        <label>Description</label>
+        <input 
+            type='text'
+            name='desc'
+            id='desc'
+            placeholder='Event description'
+            required
+            >                        
+        </input>
+        <div className="form__image">
+            <img src={imagePreview} alt="" />
+        </div>
+        <label htmlFor="img">Event Image</label>
+        <input
+        type="file"
+        name="img"
+        id="img"
+        accept="image/*"
+        onChange={(e) => handleImagePreview(e)}>            
+        </input>
+        <label>City</label>
+        <Autocomplete 
+        disablePortal
+        id="combo-box-demo"
+        options={myOptions}
+        sx={{ width: 300 }}
+        renderInput={(params) => <TextField {...params} name="city_id" />}   
+        />
+        <label>Event Start Date</label>
+        <DatePicker       
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        showTimeSelect
+        timeFormat="p"
+        timeIntervals={15}
+        dateFormat="Pp" />
+        <label>Event End Date (optional)</label>
+        <DatePicker       
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+        showTimeSelect
+        timeFormat="p"
+        timeIntervals={15}
+        dateFormat="Pp" />
+<button type="submit" className="button">Submit</button>
+            </form>         
             
-            <Autocomplete
-                
-                disablePortal
-                id="combo-box-demo"
-                options={myOptions}
-                sx={{ width: 300 }}
-                renderInput={(params) => <TextField {...params} label="City" name="city"/>}                
-            />
-            
-
-                <input type="submit" />
-            </form>   
- 
-            
-
-
 
         </div>
         </section>

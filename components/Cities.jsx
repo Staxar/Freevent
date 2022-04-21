@@ -29,7 +29,7 @@ export default function Cities({ citiesList }) {
       >
                 
                   {citiesList.map((city,i) => {                  
-                    if(i<10) {
+                    if(i<5) {
                       return (                                                                           
                     <SwiperSlide key={city._id}>                                            
                       <CitiesCard
