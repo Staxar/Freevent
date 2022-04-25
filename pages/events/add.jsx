@@ -4,6 +4,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
+import { uploadImage } from '../../services/uploadImage'
+
+
 const Add = () => {
 
     const eventForm = useRef();
@@ -18,12 +21,12 @@ const Add = () => {
 
     const handleImagePreview = (e) => {
             const url = window.URL.createObjectURL(e.target.files[0]);
-            setImagePreview(url);
-            console.log(url, "url");        
+            setImagePreview(url);    
     }
 
 
     async function handleSubmit(e) {
+        e.preventDefault();
         if (formProcessing) return;
         setFormProcessing(true);
         setError(null);
@@ -40,7 +43,8 @@ const Add = () => {
         if (form.get('img').name !== '') {
             const picture = form.get('img');
             const file = await uploadImage(picture);
-            payload.image = file.secure_url;
+            payload.img = file.secure_url;
+            
           }
 
         const response = await fetch(`/api/events`, {
@@ -52,9 +56,7 @@ const Add = () => {
         });
         if (response.ok) {
             setFormProcessing(false);
-            console.log('Wysłano! = 1')
             router.push('/events');
-            console.log('Wysłano! = 2')
         }else {
             const payload = await response.json();
             setFormProcessing(false);
@@ -98,6 +100,7 @@ const Add = () => {
         accept="image/*"
         onChange={(e) => handleImagePreview(e)}>            
         </input>
+    
         <label>City</label>
         <Autocomplete 
         disablePortal
@@ -122,7 +125,8 @@ const Add = () => {
         timeFormat="p"
         timeIntervals={15}
         dateFormat="Pp" />
-<button type="submit" className="button">Submit</button>
+            <button type="submit" className="button">Submit</button>
+            
             </form>         
             
 

@@ -1,4 +1,5 @@
 export const uploadImage = async (file) => {
+  console.log("Uploading image");
   let response = await fetch('/api/upload');
   let data = await response.json();
   const formData = new FormData();
@@ -16,6 +17,7 @@ export const uploadImage = async (file) => {
   );
 
   data = response.json();
+  console.log("DATA RESPONSE: ", data);
 
   return data;
 };
