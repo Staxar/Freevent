@@ -5,14 +5,19 @@ import Layout from '../../components/Layout'
 export default function CitiesPage() {
     const [cities, setCities] = useState([]);
 
-    useEffect(async() => {
-        try {
-            const getCities = await axios.get('http://localhost3000/api/cities')
-            setCities(getCities.data);
-        }catch(e) {
-            console.error(e, "Error CitiesPage");
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const getCities = await axios.get('http://localhost3000/api/cities')
+                setCities(getCities.data);
+            }catch(e) {
+                console.error(e, "Error CitiesPage");
+            }
         }
-    }, []);
+        fetchData();
+      }, [])
+
 
   return (
     <Layout>

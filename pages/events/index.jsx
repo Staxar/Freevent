@@ -7,14 +7,20 @@ function EventsPage() {
 
 const [events, setEvents] = useState ([]);
 
-useEffect(async () => {
+useEffect(() => {
+  async function fetchData() {
     try {
-        const getEvents = await axios.get('http://localhost:3000/api/events');
-        setEvents(getEvents.data);
+      const getEvents = await axios.get('http://localhost:3000/api/events');
+      setEvents(getEvents.data);
     }catch(e) {
-        console.error(e, "Error");
-    }
-}, []);
+          console.error(e, "Error");
+      }
+  }
+  fetchData();
+}, [])
+
+
+
 
   return (
     <Layout> 
