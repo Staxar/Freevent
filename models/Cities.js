@@ -1,9 +1,17 @@
 import mongoose from "mongoose";
 
 const CitiesSchema = new mongoose.Schema({
-    name:{
+    city:{
         type: String,
         required: true,
+        maxlength: 255,
+    },
+    lat:{
+        type: String,
+        maxlength: 255,
+    },
+    lng:{
+        type: String,
         maxlength: 255,
     },
     country:{
@@ -11,16 +19,28 @@ const CitiesSchema = new mongoose.Schema({
         required: true,
         maxlength: 255,
     },
-    voivodeship:{
+    iso2:{
         type: String,
-        required: true,
         maxlength: 255,
     },
-    postal_code:{
+    voivodeship:{
         type: String,
-        required: true,
+        required: false,
+        maxlength: 255,
+    },
+    capital:{
+        type: String,
+        maxlength: 255,
+    },
+    population:{
+        type: String,
+        maxlength: 255,
+    },
+    population_proper:{
+        type: String,
         maxlength: 255,
     }
-})
+},{ timestamps: true }
+)
 
 export default mongoose.models.Cities || mongoose.model("Cities", CitiesSchema);

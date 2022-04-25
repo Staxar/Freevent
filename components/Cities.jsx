@@ -1,20 +1,46 @@
 import React from "react";
 import CitiesCard from './CitiesCard'
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+// import required modules
+import { FreeMode, Pagination } from "swiper";
 
 export default function Cities({ citiesList }) {
   return (
     
     <section className='cities section' id='cities'>
         <h2 className="section__title">Cities</h2>
-        <div className="cities_container container swiper-container">
-            <div className="swiper-wrapper">
-                <div className="cities__content grid swiper-slide">
-                  {citiesList.map((cities) =>(
-                    <CitiesCard key={cities._id} cities={cities}/>
-                  ))}                  
-                </div>
-            </div>
+        <div className="cities_container container">
+              
+        <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+      >
+                
+                  {citiesList.map((city,i) => {                  
+                    if(i<5) {
+                      return (                                                                           
+                    <SwiperSlide key={city._id}>                                            
+                      <CitiesCard
+                      key={city._id}                         
+                      city={city} 
+                      />
+                    </SwiperSlide>
+                    )} 
+                      })}                   
+                </Swiper>              
+                    
         </div>
     </section>
 

@@ -1,0 +1,20 @@
+.cities__ {
+    &content {
+        position: relative;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
+        transition: 0.3s;
+        padding: 1rem;
+        justify-self: center;
+        height: 138px;
+        width: 150px;
+    }
+    &title {
+        font-size: var(--h3-font-size);
+        margin-bottom: var(--mb-1);
+        font-weight: var(--font-medium);
+    }
+    &description {
+        font-size: small;
+    }
+}

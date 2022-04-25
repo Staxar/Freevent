@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer__bg">
         <div className="footer__container container grid">
           <div>
-            <h1 className="footer__title">Freevent</h1>
+            <h1 className="footer__title">Fre(e)vent</h1>
             <span className="footer__subtitle">Free events 4 u</span>
           </div>
           <ul className="footer__links">
@@ -22,13 +22,13 @@ export default function Footer() {
             </li>
           </ul>
           <div className="footer__socials">
-          <a href="https://www.facebook.com/" target="_blank" className="home__social-icon">
+          <a href="https://www.facebook.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Facebook /></i>
             </a>
-            <a href="https://instagram.com/" target="_blank" className="home__social-icon">
+            <a href="https://instagram.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Instagram /></i>
             </a>
-            <a href="https://tiktok.com/" target="_blank" className="home__social-icon">
+            <a href="https://tiktok.com/" target="_blank" className="footer__social-icon">
                 <i className=""><Tiktok /></i>
             </a>
           </div>

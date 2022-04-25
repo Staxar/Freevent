@@ -4,23 +4,25 @@ import About from "../components/About";
 import Events from "../components/Events";
 import Cities from "../components/Cities";
 import axios from "axios";
-export default function Base({ citiesList }) {
+export default function Base({ citiesList, eventsList }) {
   
     return (
       <Layout>
         <Home />
         <About />
-        <Events />
-        <Cities citiesList = {citiesList}/>
+        <Events eventsList = { eventsList }/>
+        <Cities citiesList = { citiesList }/>
       </Layout>               
     );
   }
 
   export const getServerSideProps = async() => {
-    const res = await axios.get("http://localhost:3000/api/cities");
+    const city = await axios.get("http://localhost:3000/api/cities");
+    const event = await axios.get("http://localhost:3000/api/events")
     return {
       props: {
-        citiesList: res.data,
+        citiesList: city.data,
+        eventsList: event.data,
       },      
     };    
   };

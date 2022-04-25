@@ -26,7 +26,7 @@ export default function Header() {
     <section className="header">
       <header className="header" id="header">
           <nav className="nav container">
-            <a href="#" className="nav__logo">Fre(e)vent</a>
+            <a href="/" className="nav__logo">Fre(e)vent</a>
           
           <div className="nav__menu" id="nav-menu">
                     <ul className="nav__list grid">
