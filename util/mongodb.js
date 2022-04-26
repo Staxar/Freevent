@@ -20,7 +20,7 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
+  if (cached.conn) {    
     return cached.conn
   }
 
@@ -33,7 +33,7 @@ async function dbConnect() {
       return mongoose
     })
   }
-  cached.conn = await cached.promise
+  cached.conn = await cached.promise  
   return cached.conn
 }
 
