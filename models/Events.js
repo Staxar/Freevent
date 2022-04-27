@@ -19,17 +19,16 @@ const EventsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    start_date:{
-        type: Date,
-        required: true,
+    start_date: {
+      type: Date,
+      required: true,
     },
     end_date: {
-        type: Date,
-        required: true,
+      type: Date,
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.models.Events ||
-  mongoose.model("Events", EventsSchema);
+export default mongoose.models.Events || mongoose.model("Events", EventsSchema);
