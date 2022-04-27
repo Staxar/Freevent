@@ -1,5 +1,6 @@
 
 export default function CitiesCard ( { city }) {
+  
   return (
     <div className ="cities__content">
       <div className="cities__title">{city.city}</div>

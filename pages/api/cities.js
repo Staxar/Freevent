@@ -7,6 +7,9 @@ export default async function handler(req, res) {
 
   dbConnect();
 
+  // /api/eventcities?city=city.name
+  // GET, req query.city --> Cities.find
+
   if(method === "GET"){
     try {
       const cities = await Cities.find();

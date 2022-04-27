@@ -65,7 +65,7 @@ export default function Header() {
                 </div>
                 <div className="nav__btns">
                     {/* Theme change button */}                    
-                    <input type="checkbox" className="nav__icon change-theme" id="theme-button" ref={toggleThemeRef} onChange={toggleTheme}></input>
+                     <input type="checkbox"  className="nav__icon change-theme" id="theme-button" ref={toggleThemeRef} onChange={toggleTheme}></input>
                     <div className="nav__toggle" onClick={showMenu} id="nav-toggle">
                         <i className="nav__icon"><ViewGrid /></i>
                     </div>

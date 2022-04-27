@@ -1,10 +1,11 @@
 import Layout from "../../components/Layout";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import { uploadImage } from '../../services/uploadImage'
+import axios from "axios";
 
 
 const Add = () => {
@@ -16,9 +17,36 @@ const Add = () => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const router = useRouter();
-    const myOptions = ['Kępno', 'Wrocław', 'Opole'];
+    const [advice, setAdvice] = useState([]);
+    const [cityInfo, setCityInfo] = useState([]);
 
 
+
+    useEffect(() => {
+        const url = "http://localhost:3000/api/cities";
+setAdvice([]);
+setCityInfo([]);
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(url)
+                
+                response.data.map((city) => {
+                    const name = city.city;
+                    const city_id = city._id;
+                    const cid = {name, id: city_id}
+                    setAdvice(prev => [...prev,name])
+                    setCityInfo(prev => [...prev,cid])
+                })
+                
+            } catch (error) {
+                console.log("error", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    
+      
     const handleImagePreview = (e) => {
             const url = window.URL.createObjectURL(e.target.files[0]);
             setImagePreview(url);    
@@ -31,13 +59,18 @@ const Add = () => {
         setFormProcessing(true);
         setError(null);
         const form = new FormData(eventForm.current);
+        const findCityId = cityInfo.find(city  => city.name === form.get("city_id"))
+        let cityid;
+        if(findCityId) {
+            cityid = findCityId.id
+        }
         const payload = {
             title: form.get('title'),
             desc: form.get('desc'),
             img: imagePreview,
-            city_id: form.get('city_id'),
+            city_id: cityid,
             start_date: startDate,
-            end_date: form.get('end_date')
+            end_date: endDate
         };
 
         if (form.get('img').name !== '') {
@@ -105,26 +138,28 @@ const Add = () => {
         <Autocomplete 
         disablePortal
         id="combo-box-demo"
-        options={myOptions}
+        label = "city"
+        options={advice}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} name="city_id" />}   
+        renderInput={(params) => <TextField {...params} name="city_id"/>}
+        
         />
         <label>Event Start Date</label>
         <DatePicker       
         selected={startDate}
         onChange={(date) => setStartDate(date)}
         showTimeSelect
-        timeFormat="p"
+        timeFormat="HH:mm"
         timeIntervals={15}
-        dateFormat="Pp" />
+        dateFormat="MMMM d, yyyy h:mm" />
         <label>Event End Date (optional)</label>
         <DatePicker       
         selected={endDate}
         onChange={(date) => setEndDate(date)}
         showTimeSelect
-        timeFormat="p"
+        timeFormat="HH:mm"
         timeIntervals={15}
-        dateFormat="Pp" />
+        dateFormat="MMMM d, yyyy h:mm" />
             <button type="submit" className="button">Submit</button>
             
             </form>         

@@ -37,3 +37,11 @@
     }
     
 }
+.event__ {
+    &title {
+        font-weight: bold;
+    }
+    .content {
+        display: flex;
+    }
+}
