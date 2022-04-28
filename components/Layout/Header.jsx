@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
-import { ViewGrid, About, Fire, Home, User, Phone, Moon, Map, Close } from '../Icons/Icons';
+import { useState } from 'react';
+import { ViewGrid, About, Fire, Home, User, Phone, Map, Close } from '../Icons/Icons';
 export default function Header() {
     const [active, setActive] = useState(false);
 
