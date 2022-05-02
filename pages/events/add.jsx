@@ -108,7 +108,7 @@ const Add = () => {
             ></input>
             <label>Description</label>
             <input
-              type="text"
+              type="textarea"
               name="desc"
               id="desc"
               placeholder="Event description"

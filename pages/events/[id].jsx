@@ -27,7 +27,7 @@ async function City(id) {
 
 export default function Event({ eventProp, city }) {
   const event = JSON.parse(eventProp);
-  console.log(city, "Event City");
+  
   return (
     <Layout>
       <section className="event__section section">
@@ -45,6 +45,7 @@ export default function Event({ eventProp, city }) {
               <div className="event__end_date">{event.end_date}</div>
               <div className="event__city">{city ? city : ""}</div>
             </div>
+            
           </div>
         </div>
       </section>

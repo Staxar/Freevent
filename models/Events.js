@@ -15,9 +15,27 @@ const EventsSchema = new mongoose.Schema(
     img: {
       type: String,
     },
+    www: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    instagram: {
+      type: String,
+    },
+    youtube: {
+      type: String,
+    },
     city_id: {
       type: String,
       required: true,
+    },
+    place: {
+      type: String,
+    },
+    type: {
+      type: String,
     },
     start_date: {
       type: Date,
@@ -26,6 +44,9 @@ const EventsSchema = new mongoose.Schema(
     end_date: {
       type: Date,
       required: true,
+    },
+    ticket: {
+      type: String,
     },
   },
   { timestamps: true }
