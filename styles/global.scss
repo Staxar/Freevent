@@ -247,6 +247,7 @@ input[type="text"],
 [type="file"],
 [type="number"],
 [type="textarea"],
+[type="url"],
 select {
   width: 100%;
   padding: 12px 20px;
@@ -292,4 +293,13 @@ select {
 }
 .swiper-slide {
   background: transparent !important;
+}
+/*==================== AUTOCOMPLETE ====================*/
+.MuiAutocomplete-root {  
+  width: 100%;
+}
+.MuiOutlinedInput-root {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  background: #ffff;
 }

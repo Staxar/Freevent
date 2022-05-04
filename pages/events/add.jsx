@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import { uploadImage } from "../../services/uploadImage";
 import axios from "axios";
+import Categories from "../../components/Categories";
 
 const Add = () => {
   const eventForm = useRef();
@@ -17,15 +18,20 @@ const Add = () => {
   const router = useRouter();
   const [advice, setAdvice] = useState([]);
   const [cityInfo, setCityInfo] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+   
 
   useEffect(() => {
     const url = "http://localhost:3000/api/cities";
+    const caturl = "http://localhost:3000/api/categories";
     setAdvice([]);
     setCityInfo([]);
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-
+        const catresponse = await axios.get(caturl);        
+        setCategories(catresponse.data)
         response.data.map((city) => {
           const name = city.city;
           const city_id = city._id;
@@ -38,7 +44,6 @@ const Add = () => {
         console.log("error", error);
       }
     };
-
     fetchData();
   }, []);
 
@@ -106,14 +111,7 @@ const Add = () => {
               placeholder="Event title"
               required
             ></input>
-            <label>Description</label>
-            <input
-              type="textarea"
-              name="desc"
-              id="desc"
-              placeholder="Event description"
-              required
-            ></input>
+
             <div className="form__image">
               <img src={imagePreview} alt="" />
             </div>
@@ -125,16 +123,55 @@ const Add = () => {
               accept="image/*"
               onChange={(e) => handleImagePreview(e)}
             ></input>
+            <label>www</label>
+            <input
+              type="url"
+              name="www"
+              id="www"
+              placeholder="www link"              
+            ></input>
+            <label>Facebook</label>
+            <input
+              type="url"
+              name="facebook"
+              id="facebook"
+              placeholder="Facebook link"              
+            ></input>
+
+            <label>Instagram</label>
+            <input
+              type="url"
+              name="instagram"
+              id="instagram"
+              placeholder="Instagram link"              
+            ></input>
+
+              <label>YouTube</label>
+            <input
+              type="url"
+              name="youtube"
+              id="youtube"
+              placeholder="Youtube link"
+            ></input>
 
             <label>City</label>
             <Autocomplete
               disablePortal
+              fullWidth={true}
               id="combo-box-demo"
               label="city"
               options={advice}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} name="city_id" />}
             />
+            <label>Adress</label>
+            <input
+              type="text"
+              name="adress"
+              id="adress"
+              placeholder="Adress"
+              required
+            ></input>
             <label>Event Start Date</label>
             <DatePicker
               selected={startDate}
@@ -153,6 +190,31 @@ const Add = () => {
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm"
             />
+            <label>Category</label>
+            <select name="category" id="category">
+            <optgroup label="Pick category">
+            {categories.map((category) => {              
+              return (
+                <Categories key={category._id} category = {category}/>
+              )
+            })}
+                </optgroup>
+            </select>
+
+            <div className="events__category">
+              <div className="events__category_content">
+
+              </div>
+            </div>
+            <label>Enterance</label>
+            <select name="ticket" id="ticket">
+                <optgroup label="Ticket">
+                  <option value="free">Free entrance</option>
+                  <option value="ticket">Ticket</option>                  
+                </optgroup>
+            </select>
+
+
             <button type="submit" className="button">
               Submit
             </button>

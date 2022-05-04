@@ -7,7 +7,7 @@ export default function Events({ eventsList, citiesList }) {
       <h2 className="section__title">Events</h2>
       <div className="events__container container grid">
         {eventsList.map((event, i) => {
-          if (i < 3) {
+          if (i < 6) {
             return (
               <CardEvent key={event._id} event={event} eventid={event._id} />
             );

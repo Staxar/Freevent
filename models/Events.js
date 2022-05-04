@@ -48,6 +48,9 @@ const EventsSchema = new mongoose.Schema(
     ticket: {
       type: String,
     },
+    category: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
