@@ -24,14 +24,14 @@ const Add = () => {
 
   useEffect(() => {
     const url = "http://localhost:3000/api/cities";
-    const caturl = "http://localhost:3000/api/categories";
+    const caturl = "http://localhost:3000/api/parentcategories";
     setAdvice([]);
     setCityInfo([]);
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
         const catresponse = await axios.get(caturl);        
-        setCategories(catresponse.data)
+        setCategories(catresponse.data);
         response.data.map((city) => {
           const name = city.city;
           const city_id = city._id;
@@ -46,6 +46,12 @@ const Add = () => {
     };
     fetchData();
   }, []);
+
+  const handleChange = (e) => {
+    console.log("Odpalam diva")
+    document.getElementById("events__subcategory").style.visibility = "unset";
+    console.log("Zmiana diva")
+  };
 
   const handleImagePreview = (e) => {
     const url = window.URL.createObjectURL(e.target.files[0]);
@@ -191,20 +197,17 @@ const Add = () => {
               dateFormat="MMMM d, yyyy h:mm"
             />
             <label>Category</label>
-            <select name="category" id="category">
+            <select name="category" id="category" onChange={handleChange}>
             <optgroup label="Pick category">
-            {categories.map((category) => {              
+            {categories.map((category) => {                          
               return (
                 <Categories key={category._id} category = {category}/>
               )
             })}
                 </optgroup>
             </select>
-
-            <div className="events__category">
-              <div className="events__category_content">
-
-              </div>
+            <div className="events__hidden" id="events__subcategory">
+            ABC
             </div>
             <label>Enterance</label>
             <select name="ticket" id="ticket">
