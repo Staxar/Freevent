@@ -45,12 +45,16 @@ const EventsSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    ticket: {
-      type: String,
-    },
     category: {
       type: String,
     },
+    subcategory: {
+      type: String,
+      required: true,
+    },
+    ticket: {
+      type: String,
+    },    
   },
   { timestamps: true }
 );

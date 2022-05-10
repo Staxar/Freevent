@@ -81,9 +81,16 @@ const Add = () => {
       title: form.get("title"),
       desc: form.get("desc"),
       img: imagePreview,
+      www: form.get("www"),
+      facebook: form.get("facebook"),
+      instagram: form.get("instagram"),
+      youtube: form.get("youtube"),
       city_id: cityid,
+      adress: form.get("adress"),
       start_date: startDate,
       end_date: endDate,
+      category: form.get("category"),
+      subcategory: form.get("subcategory"),
     };
 
     if (form.get("img").name !== "") {
@@ -91,7 +98,7 @@ const Add = () => {
       const file = await uploadImage(picture);
       payload.img = file.secure_url;
     }
-
+    console.log(payload, "Payload")
     const response = await fetch(`/api/events`, {
       method: "POST",
       body: JSON.stringify(payload),
@@ -123,7 +130,14 @@ const Add = () => {
               placeholder="Event title"
               required
             ></input>
-
+            <label>Description</label>
+            <input
+              type="text"
+              name="desc"
+              id="desc"
+              placeholder="Event description"
+              required
+            ></input>
             <div className="form__image">
               <img src={imagePreview} alt="" />
             </div>
@@ -217,12 +231,13 @@ const Add = () => {
             <div className="events__hidden" id="events__subcategory">
             <label>Subcategory</label>
             <select name="subcategory" id="subcategory">
+            <optgroup label="Pick subcategory">
             {filtersubcategory.map((item) => {
-              return (
-                
+              return (                
                <SubCategories key={item._id} item = {item} />
               )
             })}
+            </optgroup>
             </select>
             </div>
                       
@@ -232,9 +247,8 @@ const Add = () => {
                   <option value="free">Free entrance</option>
                   <option value="ticket">Ticket</option>                  
                 </optgroup>
-            </select>
-
-
+            </select>    
+            
             <button type="submit" className="button">
               Submit
             </button>
