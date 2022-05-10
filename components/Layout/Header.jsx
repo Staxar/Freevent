@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { useState, useEffect } from 'react';
-import { ViewGrid, About, Fire, Home, User, Phone, Moon, Map, Close } from '../Icons/Icons';
+import { useState } from 'react';
+import { ViewGrid, About, Fire, Home, User, Phone, Map, Close } from '../Icons/Icons';
 export default function Header() {
     const [active, setActive] = useState(false);
 
@@ -65,7 +65,7 @@ export default function Header() {
                 </div>
                 <div className="nav__btns">
                     {/* Theme change button */}                    
-                    <input type="checkbox" className="nav__icon change-theme" id="theme-button" ref={toggleThemeRef} onChange={toggleTheme}></input>
+                     <input type="checkbox"  className="nav__icon change-theme" id="theme-button" ref={toggleThemeRef} onChange={toggleTheme}></input>
                     <div className="nav__toggle" onClick={showMenu} id="nav-toggle">
                         <i className="nav__icon"><ViewGrid /></i>
                     </div>

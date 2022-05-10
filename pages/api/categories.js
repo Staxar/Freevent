@@ -1,4 +1,4 @@
-import Events from "../../models/Events";
+import Categories from "../../models/Categories";
 import dbConnect from "../../util/mongodb";
 
 export default async function handler(req, res) {
@@ -8,16 +8,16 @@ export default async function handler(req, res) {
 
   if (method === "GET") {
     try {
-      const events = await Events.find();
-      res.status(200).json(events);
+      const categories = await Categories.find();
+      res.status(200).json(categories);
     } catch (err) {
       res.status(500).json(err);
     }
   }
   if (method === "POST") {
     try {
-      const events = await Events.create(req.body);
-      res.status(201).json(events);
+      const categories = await Categories.create(req.body);
+      res.status(201).json(categories);
     } catch (err) {
       res.status(500).json(err);
     }
