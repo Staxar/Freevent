@@ -2,7 +2,7 @@ const Categories = ({ category }) => {
   return (
    
     
-      <option value={category._id}>{category.name}</option>
+      <option value={category.name}>{category.name}</option>
 
   );
 };

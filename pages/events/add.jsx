@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import { uploadImage } from "../../services/uploadImage";
 import axios from "axios";
 import Categories from "../../components/Categories";
-
+import SubCategories from "../../components/SubCategories";
 const Add = () => {
   const eventForm = useRef();
   const [error, setError] = useState();
@@ -19,19 +19,23 @@ const Add = () => {
   const [advice, setAdvice] = useState([]);
   const [cityInfo, setCityInfo] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const [subcategories, setSubcategories] = useState([]);
+  const [filtersubcategory, setFiltersubcategory] = useState([]);
    
 
   useEffect(() => {
     const url = "http://localhost:3000/api/cities";
     const caturl = "http://localhost:3000/api/parentcategories";
+    const subcaturl = "http://localhost:3000/api/categories";
     setAdvice([]);
     setCityInfo([]);
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        const catresponse = await axios.get(caturl);        
+        const catresponse = await axios.get(caturl);     
+        const subcatresponse = await axios.get(subcaturl);   
         setCategories(catresponse.data);
+        setSubcategories(subcatresponse.data);        
         response.data.map((city) => {
           const name = city.city;
           const city_id = city._id;
@@ -44,13 +48,15 @@ const Add = () => {
         console.log("error", error);
       }
     };
-    fetchData();
+    fetchData();    
   }, []);
 
   const handleChange = (e) => {
-    console.log("Odpalam diva")
     document.getElementById("events__subcategory").style.visibility = "unset";
-    console.log("Zmiana diva")
+    const form = new FormData(eventForm.current);
+    const category = form.get("category");
+    const result = subcategories.filter( (item) => item.category === category );
+    setFiltersubcategory(result);    
   };
 
   const handleImagePreview = (e) => {
@@ -199,6 +205,7 @@ const Add = () => {
             <label>Category</label>
             <select name="category" id="category" onChange={handleChange}>
             <optgroup label="Pick category">
+            <option value="">Select Category</option> 
             {categories.map((category) => {                          
               return (
                 <Categories key={category._id} category = {category}/>
@@ -206,9 +213,19 @@ const Add = () => {
             })}
                 </optgroup>
             </select>
+            
             <div className="events__hidden" id="events__subcategory">
-            ABC
+            <label>Subcategory</label>
+            <select name="subcategory" id="subcategory">
+            {filtersubcategory.map((item) => {
+              return (
+                
+               <SubCategories key={item._id} item = {item} />
+              )
+            })}
+            </select>
             </div>
+                      
             <label>Enterance</label>
             <select name="ticket" id="ticket">
                 <optgroup label="Ticket">
