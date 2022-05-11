@@ -21,6 +21,7 @@ const Add = () => {
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [filtersubcategory, setFiltersubcategory] = useState([]);
+  const [selectedsubcategories, setSelectedsubcategories] = useState([]);
    
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const Add = () => {
 
   const handleChange = (e) => {
     document.getElementById("events__subcategory").style.visibility = "unset";
+    document.getElementById("events__subcategory").style.height = "auto";
     const form = new FormData(eventForm.current);
     const category = form.get("category");
     const result = subcategories.filter( (item) => item.category === category );
@@ -90,7 +92,8 @@ const Add = () => {
       start_date: startDate,
       end_date: endDate,
       category: form.get("category"),
-      subcategory: form.get("subcategory"),
+      // subcategory: form.get("subcategory"),
+      subcategory: selectedsubcategories,
     };
 
     if (form.get("img").name !== "") {
@@ -230,15 +233,18 @@ const Add = () => {
             
             <div className="events__hidden" id="events__subcategory">
             <label>Subcategory</label>
-            <select name="subcategory" id="subcategory">
-            <optgroup label="Pick subcategory">
+            <div className="events__subcategory">
             {filtersubcategory.map((item) => {
               return (                
-               <SubCategories key={item._id} item = {item} />
+               <SubCategories 
+               key={item._id} 
+               item = {item} 
+               setSelectedsubcategories = {setSelectedsubcategories}
+               selectedsubcategories = {selectedsubcategories}
+               />
               )
             })}
-            </optgroup>
-            </select>
+            </div>
             </div>
                       
             <label>Enterance</label>
@@ -248,6 +254,7 @@ const Add = () => {
                   <option value="ticket">Ticket</option>                  
                 </optgroup>
             </select>    
+            <button type="submit" className="button">ADD NEW FORM</button>
             
             <button type="submit" className="button">
               Submit

@@ -49,7 +49,7 @@ const EventsSchema = new mongoose.Schema(
       type: String,
     },
     subcategory: {
-      type: String,
+      type: [String],
       required: true,
     },
     ticket: {

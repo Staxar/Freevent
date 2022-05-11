@@ -16,7 +16,9 @@ export default async function handler(req, res) {
   }
   if (method === "POST") {
     try {
+      console.log(req.body, "REQ.BODY");
       const events = await Events.create(req.body);
+      console.log(events, "events API");
       res.status(201).json(events);
     } catch (err) {
       res.status(500).json(err);
