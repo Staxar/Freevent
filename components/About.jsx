@@ -1,5 +1,4 @@
 import React from "react";
-import { Facebook, Instagram, Tiktok, Mouse, ChevronDown } from "./Icons/Icons";
 import banner from "../public/images/banner.png";
 function About() {
   return (
