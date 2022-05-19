@@ -19,10 +19,10 @@ const SubCategories = ({ item, selectedsubcategories, setSelectedsubcategories }
   }
 
   return (  
-         <>
+        <div className="events__subcategory_checkbox">
         <input type="checkbox" value={item.name} name={item.name} onClick={()=>setIsChecked(!isChecked)}/>  
         <label htmlFor={item.name}>{item.name}</label>
-        </>
+        </div>
   );
 };
 

@@ -7,7 +7,6 @@ cloudinary.config({
 });
 
 export default async (req, res) => {
-  console.log("UPLOAD JS");
   const timestamp = Number(new Date());
   const api_key = process.env.NEXT_PUBLIC_CLOUDINARY_KEY;
   const sig = await cloudinary.utils.api_sign_request(
@@ -15,5 +14,4 @@ export default async (req, res) => {
     process.env.CLOUDINARY_SECRET
   );
   res.status(200).json({ timestamp, sig, api_key });
-  console.log("UPLOAD: ", timestamp, api_key, sig);
 };
