@@ -8,6 +8,7 @@ export default function CitiesAdd() {
   const [formProcessing, setFormProcessing] = useState(false);
   const router = useRouter();
 
+  // eslint-disable-next-line no-unused-vars
   async function handleSubmit(e) {
     if (formProcessing) return;
     setFormProcessing(true);
@@ -49,7 +50,7 @@ export default function CitiesAdd() {
         <div className="cities__container container">
           <form onSubmit={handleSubmit} ref={cityForm}>
             {error && <div className="form__error">{error}</div>}
-            <label>City</label>
+            <label htmlFor="html">City</label>
             <input
               type="text"
               name="city"
@@ -57,51 +58,51 @@ export default function CitiesAdd() {
               placeholder="City name"
               required
             ></input>
-            <label>Latidude</label>
+            <label htmlFor="html">Latidude</label>
             <input
               type="text"
               name="latidude"
               id="latidude"
               placeholder="Latidude"
             ></input>
-            <label>Length</label>
+            <label htmlFor="html">Length</label>
             <input
               type="text"
               name="length"
               id="length"
               placeholder="Length"
             ></input>
-            <label>Country</label>
+            <label htmlFor="html">Country</label>
             <input
               type="text"
               name="country"
               id="country"
               placeholder="Country"
             ></input>
-            <label>Iso2</label>
+            <label htmlFor="html">Iso2</label>
             <input type="text" name="iso2" id="iso2" placeholder="iso2"></input>
-            <label>Voivodeship</label>
+            <label htmlFor="html">Voivodeship</label>
             <input
               type="text"
               name="voivodeship"
               id="voivodeship"
               placeholder="Voivodeship"
             ></input>
-            <label>Capital</label>
+            <label htmlFor="html">Capital</label>
             <input
               type="text"
               name="capital"
               id="capital"
               placeholder="Capital"
             ></input>
-            <label>Population</label>
+            <label htmlFor="html">Population</label>
             <input
               type="text"
               name="population"
               id="population"
               placeholder="Population"
             ></input>
-            <label>Population_proper</label>
+            <label htmlFor="html">Population_proper</label>
             <input
               type="text"
               name="population_proper"

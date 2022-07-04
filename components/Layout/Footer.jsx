@@ -32,6 +32,7 @@ export default function Footer() {
               href="https://www.facebook.com/"
               target="_blank"
               className="footer__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Facebook />
@@ -41,6 +42,7 @@ export default function Footer() {
               href="https://instagram.com/"
               target="_blank"
               className="footer__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Instagram />
@@ -50,6 +52,7 @@ export default function Footer() {
               href="https://tiktok.com/"
               target="_blank"
               className="footer__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Tiktok />

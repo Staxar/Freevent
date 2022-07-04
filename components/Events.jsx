@@ -1,7 +1,7 @@
 import React from "react";
 import CardEvent from "./CardEvent";
 
-export default function Events({ eventsList, citiesList }) {
+export default function Events({ eventsList }) {
   return (
     <section className="events section" id="events">
       <h2 className="section__title">Events</h2>

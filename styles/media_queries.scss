@@ -33,9 +33,9 @@
       width: 200px;
     }
   }
-  .login{
+  .login {
     &__wrap {
-        padding: 0px 15px 15px 15px;
+      padding: 0px 15px 15px 15px;
     }
   }
 }
@@ -124,6 +124,7 @@
     }
     &__img {
       width: 350px;
+      height: auto;
     }
     &__description {
       text-align: initial;

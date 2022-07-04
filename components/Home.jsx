@@ -10,6 +10,7 @@ function Home() {
               href="https://www.facebook.com/"
               target="_blank"
               className="home__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Facebook />
@@ -19,6 +20,7 @@ function Home() {
               href="https://instagram.com/"
               target="_blank"
               className="home__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Instagram />
@@ -28,6 +30,7 @@ function Home() {
               href="https://tiktok.com/"
               target="_blank"
               className="home__social-icon"
+              rel="noreferrer"
             >
               <i className="">
                 <Tiktok />

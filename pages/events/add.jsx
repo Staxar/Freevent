@@ -22,7 +22,6 @@ const Add = () => {
   const [subcategories, setSubcategories] = useState([]);
   const [filtersubcategory, setFiltersubcategory] = useState([]);
   const [selectedsubcategories, setSelectedsubcategories] = useState([]);
-   
 
   useEffect(() => {
     const url = "http://localhost:3000/api/cities";
@@ -33,10 +32,10 @@ const Add = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        const catresponse = await axios.get(caturl);     
-        const subcatresponse = await axios.get(subcaturl);   
+        const catresponse = await axios.get(caturl);
+        const subcatresponse = await axios.get(subcaturl);
         setCategories(catresponse.data);
-        setSubcategories(subcatresponse.data);        
+        setSubcategories(subcatresponse.data);
         response.data.map((city) => {
           const name = city.city;
           const city_id = city._id;
@@ -49,16 +48,17 @@ const Add = () => {
         console.log("error", error);
       }
     };
-    fetchData();    
+    fetchData();
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const handleChange = (e) => {
     document.getElementById("events__subcategory").style.visibility = "unset";
     document.getElementById("events__subcategory").style.height = "auto";
     const form = new FormData(eventForm.current);
     const category = form.get("category");
-    const result = subcategories.filter( (item) => item.category === category );
-    setFiltersubcategory(result);    
+    const result = subcategories.filter((item) => item.category === category);
+    setFiltersubcategory(result);
   };
 
   const handleImagePreview = (e) => {
@@ -101,7 +101,7 @@ const Add = () => {
       const file = await uploadImage(picture);
       payload.img = file.secure_url;
     }
-    console.log(payload, "Payload")
+    console.log(payload, "Payload");
     const response = await fetch(`/api/events`, {
       method: "POST",
       body: JSON.stringify(payload),
@@ -125,7 +125,7 @@ const Add = () => {
         <div className="events__container container">
           <form onSubmit={handleSubmit} ref={eventForm}>
             {error && <div className="form_error">{error}</div>}
-            <label>Title</label>
+            <label htmlFor="html">Title</label>
             <input
               type="text"
               name="title"
@@ -133,7 +133,7 @@ const Add = () => {
               placeholder="Event title"
               required
             ></input>
-            <label>Description</label>
+            <label htmlFor="html">Description</label>
             <input
               type="text"
               name="desc"
@@ -152,30 +152,30 @@ const Add = () => {
               accept="image/*"
               onChange={(e) => handleImagePreview(e)}
             ></input>
-            <label>www</label>
+            <label htmlFor="html">www</label>
             <input
               type="url"
               name="www"
               id="www"
-              placeholder="www link"              
+              placeholder="www link"
             ></input>
-            <label>Facebook</label>
+            <label htmlFor="html">Facebook</label>
             <input
               type="url"
               name="facebook"
               id="facebook"
-              placeholder="Facebook link"              
+              placeholder="Facebook link"
             ></input>
 
-            <label>Instagram</label>
+            <label htmlFor="html">Instagram</label>
             <input
               type="url"
               name="instagram"
               id="instagram"
-              placeholder="Instagram link"              
+              placeholder="Instagram link"
             ></input>
 
-              <label>YouTube</label>
+            <label htmlFor="html">YouTube</label>
             <input
               type="url"
               name="youtube"
@@ -183,7 +183,7 @@ const Add = () => {
               placeholder="Youtube link"
             ></input>
 
-            <label>City</label>
+            <label htmlFor="html">City</label>
             <Autocomplete
               disablePortal
               fullWidth={true}
@@ -193,7 +193,7 @@ const Add = () => {
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} name="city_id" />}
             />
-            <label>Adress</label>
+            <label htmlFor="html">Adress</label>
             <input
               type="text"
               name="adress"
@@ -201,7 +201,7 @@ const Add = () => {
               placeholder="Adress"
               required
             ></input>
-            <label>Event Start Date</label>
+            <label htmlFor="html">Event Start Date</label>
             <DatePicker
               selected={startDate}
               onChange={(date) => setStartDate(date)}
@@ -210,7 +210,7 @@ const Add = () => {
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm"
             />
-            <label>Event End Date (optional)</label>
+            <label htmlFor="html">Event End Date (optional)</label>
             <DatePicker
               selected={endDate}
               onChange={(date) => setEndDate(date)}
@@ -219,43 +219,43 @@ const Add = () => {
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm"
             />
-            <label>Category</label>
+            <label htmlFor="html">Category</label>
             <select name="category" id="category" onChange={handleChange}>
-            <optgroup label="Pick category">
-            <option value="">Select Category</option> 
-            {categories.map((category) => {                          
-              return (
-                <Categories key={category._id} category = {category}/>
-              )
-            })}
-                </optgroup>
+              <optgroup label="Pick category">
+                <option value="">Select Category</option>
+                {categories.map((category) => {
+                  return <Categories key={category._id} category={category} />;
+                })}
+              </optgroup>
             </select>
-            
+
             <div className="events__hidden" id="events__subcategory">
-            <label>Subcategory</label>
-            <div className="events__subcategory">
-            {filtersubcategory.map((item) => {
-              return (                
-               <SubCategories 
-               key={item._id} 
-               item = {item} 
-               setSelectedsubcategories = {setSelectedsubcategories}
-               selectedsubcategories = {selectedsubcategories}
-               />
-              )
-            })}
+              <label htmlFor="html">Subcategory</label>
+              <div className="events__subcategory">
+                {filtersubcategory.map((item) => {
+                  return (
+                    <SubCategories
+                      key={item._id}
+                      item={item}
+                      setSelectedsubcategories={setSelectedsubcategories}
+                      selectedsubcategories={selectedsubcategories}
+                    />
+                  );
+                })}
+              </div>
             </div>
-            </div>
-                      
-            <label>Enterance</label>
+
+            <label htmlFor="html">Enterance</label>
             <select name="ticket" id="ticket">
-                <optgroup label="Ticket">
-                  <option value="free">Free entrance</option>
-                  <option value="ticket">Ticket</option>                  
-                </optgroup>
-            </select>    
-            <button type="submit" className="button">ADD NEW FORM</button>
-            
+              <optgroup label="Ticket">
+                <option value="free">Free entrance</option>
+                <option value="ticket">Ticket</option>
+              </optgroup>
+            </select>
+            <button type="submit" className="button">
+              ADD NEW FORM
+            </button>
+
             <button type="submit" className="button">
               Submit
             </button>
