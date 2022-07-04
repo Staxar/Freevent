@@ -1,5 +1,5 @@
 import React from "react";
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
 import "../styles/index.scss";
 
 export default function App({
@@ -10,5 +10,5 @@ export default function App({
     <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
-  )
+  );
 }

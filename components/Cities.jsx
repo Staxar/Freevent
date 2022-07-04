@@ -23,7 +23,7 @@ export default function Cities({ citiesList }) {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper"
+          className="Swiper"
         >
           {citiesList.map((city, i) => {
             if (i < 5) {

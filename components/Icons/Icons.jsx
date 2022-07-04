@@ -211,5 +211,3 @@ export const Lock_Closed = () => (
     ></path>{" "}
   </svg>
 );
-
-

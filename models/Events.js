@@ -54,7 +54,7 @@ const EventsSchema = new mongoose.Schema(
     },
     ticket: {
       type: String,
-    },    
+    },
   },
   { timestamps: true }
 );

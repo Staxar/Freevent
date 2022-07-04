@@ -11,9 +11,10 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "cloudinary": "^1.29.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.10",
-    "next": "12.0.7",
+    "next": "^12.0.7",
     "next-auth": "^4.3.4",
     "react": "^18.0.0",
     "react-calendar": "^3.7.0",
@@ -36,7 +37,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.jsx ."
   },
   "eslintConfig": {
     "extends": [
